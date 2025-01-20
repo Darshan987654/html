@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasantdada Patil Pratisthan's College</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        .header-top {
+            background-color: #4a0d4a;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .college-name {
+            font-size: 1.2rem;
+            max-width: 500px;
+            line-height: 1.2;
+        }
+
+        .top-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hostel-badge {
+            background-color: white;
+            color: #4a0d4a;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .main-nav li {
+            position: relative;
+        }
+
+        .main-nav a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            background-color: #4a0d4a;
+            color: white;
+        }
+
+        .sub-nav {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 10px 0;
+            background-color: #f5f5f5;
+        }
+
+        .sub-nav a {
+            padding: 5px 15px;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .sub-nav a:hover {
+            color: #4a0d4a;
+        }
+
+        /* Image Carousel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 500px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background-color: white;
+        }
+
+        /* News & Announcements */
+        .news-section {
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .news-list {
+            height: 300px;
+            overflow-y: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .news-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Quick Links */
+        .quick-links {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .quick-links h3 {
+            margin-bottom: 15px;
+            color: #4a0d4a;
+        }
+
+        .quick-links ul {
+            list-style: none;
+        }
+
+        .quick-links a {
+            display: block;
+            padding: 8px 0;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .quick-links a:hover {
+            color: #4a0d4a;
+        }
+
+        /* Statistics Counter */
+        .stats-section {
+            padding: 40px 20px;
+            background-color: #4a0d4a;
+            color: white;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background-color: #2a062a;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .main-nav {
+                flex-wrap: wrap;
+            }
+
+            .carousel {
+                height: 300px;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-top">
+        <div class="logo-section">
+            <img src="lo?height=60&width=60" alt="College Logo" class="logo">
+            <div class="college-name">
+                VASANTDADA PATIL PRATISTHAN'S<br>
+                COLLEGE OF ENGINEERING & VISUAL ARTS
+            </div>
+        </div>
+        <div class="top-right">
+            <div class="hostel-badge">HOSTEL FACILITY AVAILABLE</div>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook">FB</a>
+                <a href="#" aria-label="YouTube">YT</a>
+                <a href="#" aria-label="Phone">PH</a>
+                <a href="#" aria-label="LinkedIn">IN</a>
+                <a href="#" aria-label="Instagram">IG</a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-container">
+        <ul class="main-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Programmes</a></li>
+            <li><a href="#">Admission</a></li>
+            <li><a href="#">Academics</a></li>
+            <li><a href="#">Affiliation</a></li>
+            <li><a href="#">Placement</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#">Industry Connect</a></li>
+        </ul>
+        <ul class="sub-nav">
+            <li><a href="#">IQAC</a></li>
+            <li><a href="#">NIRF</a></li>
+            <li><a href="#">Student Life</a></li>
+            <li><a href="#">Facilities</a></li>
+            <li><a href="#">Careers</a></li>
+        </ul>
+    </nav>
+
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-20%20095225-657IMPK2j5eG11zqxtfyzVVDphT8TJ.png" alt="Laboratory">
+            </div>
+            <div class="carousel-item">
+                <img src="college.jpeg" alt="Campus View">
+            </div>
+            <div class="carousel-item">
+                <img src="students.jpeg" alt="Students in Class">
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <span class="carousel-dot active"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+        </div>
+    </div>
+
+    <section class="news-section">
+        <div class="news-container">
+            <div class="news-list">
+                <h2>News & Announcements</h2>
+                <div class="news-item">
+                    <h3>Admission Open for 2025-26</h3>
+                    <p class="news-date">January 20, 2025</p>
+                    <p>Applications are now open for the academic year 2025-26. Apply early for best consideration.</p>
+                </div>
+                <div class="news-item">
+                    <h3>National Technical Symposium</h3>
+                    <p class="news-date">January 18, 2025</p>
+                    <p>Join us for the annual technical symposium featuring innovative projects and expert talks.</p>
+                </div>
+                <div class="news-item">
+                    <h3>Industry Partnership Program</h3>
+                    <p class="news-date">January 15, 2025</p>
+                    <p>New collaboration opportunities with leading technology companies.</p>
+                </div>
+            </div>
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Academic Calendar</a></li>
+                    <li><a href="#">Exam Schedule</a></li>
+                    <li><a href="#">Results</a></li>
+                    <li><a href="#">Library Portal</a></li>
+                    <li><a href="#">Student Portal</a></li>
+                    <li><a href="#">Pay Fees Online</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">2000+</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Faculty Members</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Placement Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Industry Partners</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>123 College Road</li>
+                    <li>City, State - PIN</li>
+                    <li>Phone: +91 1234567890</li>
+                    <li>Email: info@college.edu</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Important Links</h4>
+                <ul>
+                    <li><a href="#">AICTE Approval</a></li>
+                    <li><a href="#">NBA Accreditation</a></li>
+                    <li><a href="#">NAAC Status</a></li>
+                    <li><a href="#">RTI</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Student Corner</h4>
+                <ul>
+                    <li><a href="#">E-Learning Portal</a></li>
+                    <li><a href="#">Student Login</a></li>
+                    <li><a href="#">Alumni Portal</a></li>
+                    <li><a href="#">Grievance Cell</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Vasantdada Patil Pratisthan's College of Engineering & Visual Arts. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Image Carousel Functionality
+        const dots = document.querySelectorAll('.carousel-dot');
+        const inner = document.querySelector('.carousel-inner');
+        let currentSlide = 0;
+
+        function updateCarousel() {
+            inner.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // Auto-advance slides
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % dots.length;
+            updateCarousel();
+        }, 5000);
+    </script>
+</body>
+</html>
